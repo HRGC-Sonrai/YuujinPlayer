@@ -21,89 +21,189 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Sans+KR:wght@100..900&family=Noto+Sans+SC:wght@100..900&display=swap" rel="stylesheet">
+    <script src="integration.js"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        'apple-bg': {
-                            light: '#f5f5f7',
-                            dark: '#1c1c1e'
+                        'vision-bg': {
+                            light: 'rgba(248, 250, 252, 0.85)',
+                            dark: 'rgba(15, 23, 42, 0.85)'
                         },
-                        'apple-text': {
-                            light: '#1d1d1f',
-                            dark: '#f5f5f7'
+                        'vision-surface': {
+                            light: 'rgba(255, 255, 255, 0.25)',
+                            dark: 'rgba(30, 41, 59, 0.25)'
                         },
-                        'apple-secondary': {
-                            light: '#86868b',
-                            dark: '#a1a1a6'
+                        'vision-elevated': {
+                            light: 'rgba(255, 255, 255, 0.4)',
+                            dark: 'rgba(51, 65, 85, 0.4)'
                         },
-                        'apple-highlight': {
-                            light: '#0071e3',
-                            dark: '#0a84ff'
+                        'vision-text': {
+                            light: 'rgba(15, 23, 42, 0.9)',
+                            dark: 'rgba(248, 250, 252, 0.9)'
                         },
-                        'apple-card-bg': {
-                            light: 'rgba(255, 255, 255, 0.7)',
-                            dark: 'rgba(44, 44, 46, 0.7)'
+                        'vision-secondary': {
+                            light: 'rgba(71, 85, 105, 0.7)',
+                            dark: 'rgba(148, 163, 184, 0.7)'
+                        },
+                        'vision-accent': {
+                            light: 'rgba(59, 130, 246, 0.8)',
+                            dark: 'rgba(96, 165, 250, 0.8)'
                         },
                     },
                     fontFamily: {
-                        sans: ['Segoe UI Variable Display','Segoe UI Bold','SF Pro Display Semibold','Genryu Sans CJK','MeiraKakuGo','SDK_SC_Web','Segoe UI Semibold','Microsoft Yahei UI','Hiragino Sans GB','Inter', 'SF Pro Display Semibold', 'PingFang SC', 'system-ui', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif' , 'SF Compact' , 'PingFang SC'],
+                        sans: ['Segoe UI Variable Display','Segoe UI Bold','SF Pro Display Semibold','Genryu Sans CJK','SDK_SC_Web','Segoe UI Semibold','Microsoft Yahei UI','Hiragino Sans GB','Inter', 'SF Pro Display Semibold', 'PingFang SC', 'system-ui', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif' , 'SF Compact' , 'PingFang SC'],
                         bashontaitoru:['Segoe UI Variable Display Bold','Segoe UI Semibold','SF Pro Display Semibold','Inter Bold','Roboto Bold','Noto Sans JP Heavy','Noto Sans KR Heavy','Noto Sans TC Heavy','Noto Sans SC Heavy'] 
                     },
+                    backdropBlur: {
+                        'vision': '40px',
+                        'vision-heavy': '60px',
+                    },
+                    boxShadow: {
+                        'vision': '0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 16px rgba(0, 0, 0, 0.08)',
+                        'vision-elevated': '0 20px 64px rgba(0, 0, 0, 0.15), 0 8px 32px rgba(0, 0, 0, 0.1)',
+                        'vision-inset': 'inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+                    }
                 },
             },
         }
     </script>
     <style>
-        .glassmorphism {
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+        .vision-glass {
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.12),
+                0 2px 16px rgba(0, 0, 0, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
+
+        .vision-glass-heavy {
+            backdrop-filter: blur(60px);
+            -webkit-backdrop-filter: blur(60px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 
+                0 20px 64px rgba(0, 0, 0, 0.15),
+                0 8px 32px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        }
+
+        .dark .vision-glass {
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                0 2px 16px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .dark .vision-glass-heavy {
+            border-color: rgba(255, 255, 255, 0.08);
+            box-shadow: 
+                0 20px 64px rgba(0, 0, 0, 0.4),
+                0 8px 32px rgba(0, 0, 0, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.03);
+        }
+
+        .vision-button {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .vision-button:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-1px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .dark .vision-button {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .dark .vision-button:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Page transition animations - Windows 10 style */
+        .page-transition-enter-active {
+            transition: all 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .page-transition-leave-active {
+            transition: all 0.075s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+        }
+
+        .page-transition-enter {
+            opacity: 0;
+            transform: scale(0.95) translateY(20px);
+        }
+
+        .page-transition-leave-to {
+            opacity: 0;
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .page-transition-enter-to,
+        .page-transition-leave {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+
         [x-cloak] { display: none !important; }
 
         .custom-scrollbar {
             scrollbar-width: thin;
-            scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+            scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
         }
 
         .custom-scrollbar::-webkit-scrollbar {
-            width: 6px;
+            width: 8px;
         }
 
         .custom-scrollbar::-webkit-scrollbar-track {
-            background: var(--scrollbar-track);
+            background: transparent;
         }
 
         .custom-scrollbar::-webkit-scrollbar-thumb {
-            background-color: var(--scrollbar-thumb);
-            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            border: 2px solid transparent;
+            background-clip: content-box;
+        }
+
+        .dark .custom-scrollbar {
+            scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+        }
+
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
         }
 
         .lyrics-fade-enter-active, .lyrics-fade-leave-active {
-            transition: all 0.5s ease;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .lyrics-fade-enter, .lyrics-fade-leave-to {
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(30px);
         }
 
         .lyrics-fade-move {
-            transition: transform 0.5s;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         :root {
-            --scrollbar-thumb: rgba(0, 0, 0, 0.2);
-            --scrollbar-track: transparent;
-            --text-color: black;
+            --text-color: rgba(15, 23, 42, 0.9);
         }
 
         .dark {
-            --scrollbar-thumb: rgba(255, 255, 255, 0.2);
-            --scrollbar-track: rgba(255, 255, 255, 0.1);
-            --text-color: white;
+            --text-color: rgba(248, 250, 252, 0.9);
         }
 
         .lyrics-container {
@@ -115,38 +215,20 @@
         .lyrics-content {
             position: absolute;
             width: 100%;
-            transition: transform 0.4s;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .lyric-line {
-            padding: 1px 0;
-        }
-        
-        @font-face {
-        font-family: "MeiraKakuGo";
-        src:
-        url("MeiraKakuGo.woff2") format("woff2"),
-        }
-
-
-        .glassmorphism {
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-        }
-
-        .dark .glassmorphism {
-            border-color: rgba(255, 255, 255, 0.1);
+            padding: 2px 0;
         }
 
         #backgroundOverlay {
-            transition: background-color 0.3s ease;
+            transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .harmony {
             font-style: italic;
-            opacity: 0.8;
+            opacity: 0.7;
             font-size: 0.9em;
         }
 
@@ -175,28 +257,27 @@
             padding-right: 3%;
         }
 
-        /* New styles for the minimalist layout */
         .player-container {
             display: flex;
             flex-direction: column;
             height: 100vh;
             background: transparent;
-            color: var(--text-color, black);
-            padding: 2rem;
+            color: var(--text-color);
+            padding: 3rem;
         }
 
         .player-header {
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
         }
 
         .track-title {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+            font-size: 2.75rem;
+            margin-bottom: 0.75rem;
         }
 
         .track-artist {
-            font-size: 1.2rem;
-            opacity: 0.7;
+            font-size: 1.25rem;
+            opacity: 0.8;
         }
 
         .player-main {
@@ -208,20 +289,36 @@
         }
 
         .circular-display {
-            width: 400px;
-            height: 400px;
+            width: 420px;
+            height: 420px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 
+                0 20px 64px rgba(0, 0, 0, 0.15),
+                0 8px 32px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .dark .circular-display {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 20px 64px rgba(0, 0, 0, 0.4),
+                0 8px 32px rgba(0, 0, 0, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
         }
 
         [lang="ko_KP"],
-:lang(ko_KP) {
-  font-family: 'Malgun Gothic', sans-serif;
-}
+        :lang(ko_KP) {
+            font-family: 'Malgun Gothic', sans-serif;
+        }
 
         .player-container .md:hidden .flex-1 {
             padding-top: 2rem;
@@ -231,15 +328,14 @@
             padding-top: 2rem;
         }
 
-        /* Artist Info Modal Styles */
         .artist-info-modal {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(10px);
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(20px);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -247,27 +343,51 @@
         }
 
         .artist-info-content {
-            background-color: white;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             padding: 2rem;
-            border-radius: 10px;
+            border-radius: 20px;
             width: 80%;
             max-width: 1580px;
             max-height: 80%;
             overflow-y: auto;
+            box-shadow: 0 20px 64px rgba(0, 0, 0, 0.15);
+        }
+
+        .dark .artist-info-content {
+            background: rgba(30, 41, 59, 0.25);
+            border-color: rgba(255, 255, 255, 0.1);
         }
 
         .artist-info-close {
             position: absolute;
-            top: 10px;
-            right: 10px;
+            top: 15px;
+            right: 15px;
             font-size: 1.5rem;
             cursor: pointer;
+            color: rgba(0, 0, 0, 0.7);
+            transition: color 0.2s;
+        }
+
+        .dark .artist-info-close {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .artist-info-close:hover {
+            color: rgba(0, 0, 0, 1);
+        }
+
+        .dark .artist-info-close:hover {
+            color: rgba(255, 255, 255, 1);
         }
 
         .artist-info-iframe {
             width: 100%;
             height: 500px;
             border: none;
+            border-radius: 12px;
         }
 
         .modal {
@@ -276,524 +396,923 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(10px);
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(20px);
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 1000;
-            display: none; /* Initially hidden */
+            display: none;
         }
+
         .modal-content {
-            background-color: white;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             padding: 2rem;
-            border-radius: 10px;
+            border-radius: 20px;
             width: 80%;
             max-width: 600px;
             text-align: center;
             position: relative;
+            box-shadow: 0 20px 64px rgba(0, 0, 0, 0.15);
         }
+
+        .dark .modal-content {
+            background: rgba(30, 41, 59, 0.25);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
         .modal-close {
             position: absolute;
-            top: 10px;
-            right: 10px;
+            top: 15px;
+            right: 15px;
             font-size: 1.5rem;
             cursor: pointer;
+            color: rgba(0, 0, 0, 0.7);
+            transition: color 0.2s;
         }
+
+        .dark .modal-close {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .modal-close:hover {
+            color: rgba(0, 0, 0, 1);
+        }
+
+        .dark .modal-close:hover {
+            color: rgba(255, 255, 255, 1);
+        }
+
         @keyframes marquee {
-        0% {
-            transform: translateX(0);
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
         }
-        100% {
-            transform: translateX(-100%);
+
+        body {
+            background: linear-gradient(135deg, 
+                rgba(248, 250, 252, 0.9) 0%, 
+                rgba(241, 245, 249, 0.9) 50%, 
+                rgba(226, 232, 240, 0.9) 100%);
         }
-    }
 
+        .dark body {
+            background: linear-gradient(135deg, 
+                rgba(15, 23, 42, 0.9) 0%, 
+                rgba(30, 41, 59, 0.9) 50%, 
+                rgba(51, 65, 85, 0.9) 100%);
+        }
 
-    /* New styles for MicaAlt effect */
-    body {
-        background-color: transparent !important;
-    }
+        #app {
+            background-color: transparent !important;
+        }
 
-    #app {
-        background-color: transparent !important;
-    }
+        .vision-card {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.12),
+                0 2px 16px rgba(0, 0, 0, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
 
-    .bg-apple-bg-light, .bg-apple-bg-dark {
-        background-color: rgba(255, 255, 255, 0.7) !important;
-    }
+        .dark .vision-card {
+            background: rgba(30, 41, 59, 0.25);
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                0 2px 16px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
 
-    .dark .bg-apple-bg-light, .dark .bg-apple-bg-dark {
-        background-color: rgba(0, 0, 0, 0.7) !important;
-    }
+        footer {
+            background-color: transparent !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+        }
 
-    .glassmorphism {
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        background-color: rgba(255, 255, 255, 0.5);
-    }
+        .footer-content {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px 16px 0 0;
+            box-shadow: 
+                0 -8px 32px rgba(0, 0, 0, 0.12),
+                0 -2px 16px rgba(0, 0, 0, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
 
-    .dark .glassmorphism {
-        background-color: rgba(0, 0, 0, 0.5);
-    }
+        .dark .footer-content {
+            background: rgba(30, 41, 59, 0.25);
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 -8px 32px rgba(0, 0, 0, 0.3),
+                0 -2px 16px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
 
-    footer {
-        background-color: transparent !important;
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-    }
+        .vision-input {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-    .footer-content {
-        background-color: rgba(255, 255, 255, 0.5);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-    }
+        .vision-input:focus {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
 
-    .dark .footer-content {
-        background-color: rgba(0, 0, 0, 0.5);
-    }
+        .dark .vision-input {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .dark .vision-input:focus {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(96, 165, 250, 0.5);
+            box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+        }
+
+        /* Mobile-specific styles */
+        @media (max-width: 768px) {
+            .player-container {
+                padding: 1.5rem;
+            }
+            
+            .track-title {
+                font-size: 2rem;
+                line-height: 1.2;
+            }
+            
+            .track-artist {
+                font-size: 1rem;
+            }
+            
+            .circular-display {
+                width: 280px;
+                height: 280px;
+            }
+            
+            .vision-card {
+                border-radius: 12px;
+            }
+            
+            .vision-button {
+                border-radius: 12px;
+            }
+            
+            .vision-input {
+                border-radius: 8px;
+            }
+        }
+
+        /* Mobile footer adjustments */
+        @media (max-width: 640px) {
+            .footer-content .h-12 {
+                height: 3.5rem;
+            }
+            
+            .footer-content .h-16 {
+                height: 4rem;
+            }
+        }
     </style>
 </head>
-<body class="bg-apple-bg-light dark:bg-apple-bg-dark text-apple-text-light dark:text-apple-text-dark">
+<body class="bg-vision-bg-light dark:bg-vision-bg-dark text-vision-text-light dark:text-vision-text-dark">
     <div class="flowing-album-container">
         <div id="flowingAlbum1" class="flowing-album"></div>
         <div id="flowingAlbum2" class="flowing-album"></div>
     </div>
+    <canvas id="barVisualizer" class="fixed top-0 left-0 w-full h-full -z-10" style="display: none;"></canvas>
     <div id="backgroundOverlay" class="fixed top-0 left-0 w-full h-full -z-10"></div>
     <div id="app" class="h-screen flex flex-col">
-        <!-- Main content -->
+        <!-- Main content with page transitions -->
         <main class="flex-1 overflow-y-auto p-8">
-            <!-- Library View -->
-            <div v-if="currentView === 'library'" class="px-8 py-6">
-                <div class="flex justify-between items-center mb-8">
-                    <h2 class="text-3xl font-medium tracking-tight text-apple-text-light dark:text-apple-text-dark">{{ $t('library') }}</h2>
-                    <div class="flex items-center space-x-3">
-                        <label class="inline-flex items-center px-4 py-2 rounded-full bg-apple-button-light dark:bg-apple-button-dark hover:bg-apple-button-hover-light dark:hover:bg-apple-button-hover-dark transition-all duration-200 cursor-pointer text-sm font-medium">
-                            <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            <span>{{ $t('addTrack') }}</span>
-                            <input type="file" @change="handleFileSelect" accept="audio/*" class="hidden">
-                        </label>
-                        <label class="inline-flex items-center px-4 py-2 rounded-full bg-apple-button-light dark:bg-apple-button-dark hover:bg-apple-button-hover-light dark:hover:bg-apple-button-hover-dark transition-all duration-200 cursor-pointer text-sm font-medium">
-                            <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            <span>{{ $t('addFolder') }}</span>
-                            <input type="file" @change="handleFolderSelect" webkitdirectory directory multiple class="hidden">
-                        </label>
-                        <button @click="toggleLibraryLayout" class="p-2 rounded-full bg-apple-button-light dark:bg-apple-button-dark hover:bg-apple-button-hover-light dark:hover:bg-apple-button-hover-dark transition-all duration-200">
-                            <i :data-feather="libraryLayout === 'grid' ? 'list' : 'grid'" class="w-5 h-5"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Grid Layout -->
-                <div v-if="libraryLayout === 'grid'" 
-                    class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-6">
-                    <div v-for="(track, index) in playlist" 
-                        :key="track.id" 
-                        class="group relative bg-apple-card-light dark:bg-apple-card-dark rounded-xl overflow-hidden cursor-pointer transition-all duration-300"
-                        @click="playTrack(index)">
-                    <div class="aspect-square overflow-hidden">
-                        <img :src="track.coverArt" 
-                                :alt="track.title" 
-                                class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105">
-                    </div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div class="absolute bottom-0 left-0 right-0 p-4">
-                            <div class="flex items-center justify-between">
-                                <div class="flex-1 overflow-hidden">
-                                    <h3 class="font-medium text-white whitespace-nowrap overflow-hidden">
-                                        <span class="inline-block animate-marquee">{{ track.title }}</span>
-                                    </h3>
-                                    <p class="text-sm text-white/80 truncate">{{ track.artist }}</p>
-                                </div>
-                                <button class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors">
+            <transition name="page-transition" mode="out-in">
+                <!-- Library View -->
+                <div v-if="currentView === 'library'" key="library" class="px-8 py-6">
+                    <!-- Mobile Layout for Library -->
+                    <div class="md:hidden px-4 py-6">
+                        <div class="flex justify-between items-center mb-6">
+                            <h2 class="text-2xl font-semibold text-vision-text-light dark:text-vision-text-dark">{{ $t('library') }}</h2>
+                            <div class="flex items-center space-x-2">
+                                <label class="vision-button p-3 rounded-full cursor-pointer">
                                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M5 3l14 9-14 9V3z" fill="currentColor"/>
+                                        <path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
+                                    <input type="file" @change="handleFileSelect" accept="audio/*" class="hidden">
+                                </label>
+                                <label class="vision-button p-3 rounded-full cursor-pointer">
+                                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    <input type="file" @change="handleFolderSelect" webkitdirectory directory multiple class="hidden">
+                                </label>
+                                <button @click="toggleLibraryLayout" class="vision-button p-3 rounded-full">
+                                    <i :data-feather="libraryLayout === 'grid' ? 'list' : 'grid'" class="w-5 h-5"></i>
                                 </button>
                             </div>
                         </div>
-                    </div>
-                    </div>
-                </div>
 
-                <!-- List Layout -->
-                <div v-else class="bg-apple-card-light dark:bg-apple-card-dark rounded-xl overflow-hidden">
-                    <div v-for="(track, index) in playlist" 
-                        :key="track.id"
-                        class="group flex items-center p-4 hover:bg-apple-highlight-light/5 dark:hover:bg-apple-highlight-dark/5 transition-colors border-b border-apple-border-light dark:border-apple-border-dark last:border-0"
-                        @click="playTrack(index)">
-                    <div class="relative w-14 h-14 rounded-lg overflow-hidden">
-                        <img :src="track.coverArt" 
-                                :alt="track.title" 
-                                class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
-                            <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M5 3l14 9-14 9V3z" fill="currentColor"/>
-                            </svg>
+                        <!-- Mobile Grid Layout -->
+                        <div v-if="libraryLayout === 'grid'" class="grid grid-cols-2 gap-4">
+                            <div v-for="(track, index) in playlist" 
+                                :key="track.id" 
+                                class="group relative vision-card overflow-hidden cursor-pointer transition-all duration-300"
+                                @click="playTrack(index)">
+                                <div class="aspect-square overflow-hidden">
+                                    <img :src="track.coverArt" 
+                                        :alt="track.title" 
+                                        class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105">
+                                </div>
+                                <div class="p-3">
+                                    <h3 class="font-medium text-vision-text-light dark:text-vision-text-dark text-sm truncate">{{ track.title }}</h3>
+                                    <p class="text-xs text-vision-secondary-light dark:text-vision-secondary-dark truncate mt-1">{{ track.artist }}</p>
+                                </div>
+                                <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button class="w-8 h-8 rounded-full bg-black/20 backdrop-blur-sm flex items-center justify-center text-white">
+                                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M5 3l14 9-14 9V3z" fill="currentColor"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mobile List Layout -->
+                        <div v-else class="space-y-2">
+                            <div v-for="(track, index) in playlist" 
+                                :key="track.id"
+                                class="group vision-card p-3 cursor-pointer transition-all duration-300"
+                                @click="playTrack(index)">
+                                <div class="flex items-center space-x-3">
+                                    <div class="relative w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
+                                        <img :src="track.coverArt" 
+                                            :alt="track.title" 
+                                            class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
+                                            <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M5 3l14 9-14 9V3z" fill="currentColor"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <h3 class="font-medium text-vision-text-light dark:text-vision-text-dark text-sm truncate">{{ track.title }}</h3>
+                                        <p class="text-xs text-vision-secondary-light dark:text-vision-secondary-dark truncate">{{ track.artist }}</p>
+                                    </div>
+                                    <button class="p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="ml-4 flex-1 min-w-0 overflow-hidden">
-                        <h3 class="font-medium text-apple-text-light dark:text-apple-text-dark whitespace-nowrap overflow-hidden">
-                            <span class="inline-block animate-marquee">{{ track.title }}</span>
-                        </h3>
-                        <p class="text-sm text-apple-secondary-light dark:text-apple-secondary-dark truncate">{{ track.artist }}</p>
-                    </div>
-                    <div class="flex items-center space-x-4">
-                        <span class="text-sm text-apple-secondary-light dark:text-apple-secondary-dark">
-                            {{ track.duration || '--:--' }}
-                        </span>
-                        <button class="p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-apple-highlight-light/10 dark:hover:bg-apple-highlight-dark/10">
-                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"/>
-                            </svg>
-                        </button>
-                    </div>
+
+                    <!-- Desktop Layout for Library -->
+                    <div class="hidden md:block px-8 py-6">
+                        <div class="flex justify-between items-center mb-8">
+                            <h2 class="text-3xl font-semibold tracking-tight text-vision-text-light dark:text-vision-text-dark">{{ $t('library') }}</h2>
+                            <div class="flex items-center space-x-3">
+                                <label class="vision-button inline-flex items-center px-5 py-3 rounded-full cursor-pointer text-sm font-medium">
+                                    <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    <span>{{ $t('addTrack') }}</span>
+                                    <input type="file" @change="handleFileSelect" accept="audio/*" class="hidden">
+                                </label>
+                                <label class="vision-button inline-flex items-center px-5 py-3 rounded-full cursor-pointer text-sm font-medium">
+                                    <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                    <span>{{ $t('addFolder') }}</span>
+                                    <input type="file" @change="handleFolderSelect" webkitdirectory directory multiple class="hidden">
+                                </label>
+                                <button @click="toggleLibraryLayout" class="vision-button p-3 rounded-full">
+                                    <i :data-feather="libraryLayout === 'grid' ? 'list' : 'grid'" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Grid Layout -->
+                        <div v-if="libraryLayout === 'grid'" 
+                            class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-6">
+                            <div v-for="(track, index) in playlist" 
+                                :key="track.id" 
+                                class="group relative vision-card overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105"
+                                @click="playTrack(index)">
+                                <div class="aspect-square overflow-hidden">
+                                    <img :src="track.coverArt" 
+                                        :alt="track.title" 
+                                        class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110">
+                                </div>
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <div class="absolute bottom-0 left-0 right-0 p-4">
+                                        <div class="flex items-center justify-between">
+                                            <div class="flex-1 overflow-hidden">
+                                                <h3 class="font-semibold text-white whitespace-nowrap overflow-hidden">
+                                                    <span class="inline-block animate-marquee">{{ track.title }}</span>
+                                                </h3>
+                                                <p class="text-sm text-white/80 truncate">{{ track.artist }}</p>
+                                            </div>
+                                            <button class="w-10 h-10 rounded-full bg-white/15 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/25 transition-colors">
+                                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <path d="M5 3l14 9-14 9V3z" fill="currentColor"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- List Layout -->
+                        <div v-else class="vision-card overflow-hidden">
+                            <div v-for="(track, index) in playlist" 
+                                :key="track.id"
+                                class="group flex items-center p-4 hover:bg-white/10 dark:hover:bg-white/5 transition-colors border-b border-white/10 dark:border-white/5 last:border-0"
+                                @click="playTrack(index)">
+                                <div class="relative w-14 h-14 rounded-lg overflow-hidden">
+                                    <img :src="track.coverArt" 
+                                        :alt="track.title" 
+                                        class="w-full h-full object-cover">
+                                    <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M5 3l14 9-14 9V3z" fill="currentColor"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="ml-4 flex-1 min-w-0 overflow-hidden">
+                                    <h3 class="font-semibold text-vision-text-light dark:text-vision-text-dark whitespace-nowrap overflow-hidden">
+                                        <span class="inline-block animate-marquee">{{ track.title }}</span>
+                                    </h3>
+                                    <p class="text-sm text-vision-secondary-light dark:text-vision-secondary-dark truncate">{{ track.artist }}</p>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <span class="text-sm text-vision-secondary-light dark:text-vision-secondary-dark">
+                                        {{ track.duration || '--:--' }}
+                                    </span>
+                                    <button class="p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white/10 dark:hover:bg-white/5">
+                                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Now Playing View -->
-            <div v-if="currentView === 'nowPlaying'" class="player-container">
-                <!-- Mobile Layout -->
-                <div class="md:hidden h-screen text-gray-900 dark:text-white p-6 flex flex-col bg-transparent">
-                    <!-- Title Section -->
-                    <div class="flex-none">
-                        <h1 class="text-4xl font-bold mb-1">{{ currentTrack.title }}</h1>
-                        <p class="text-lg text-gray-500 dark:text-gray-400 cursor-pointer" @click="showArtistInfo">{{ currentTrack.artist }}</p>
+                <!-- Now Playing View -->
+                <div v-else-if="currentView === 'nowPlaying'" key="nowPlaying" class="player-container">
+                    <!-- Mobile Layout -->
+                    <div class="md:hidden h-screen text-vision-text-light dark:text-vision-text-dark p-6 flex flex-col bg-transparent">
+                        <!-- Title Section -->
+                        <div class="flex-none">
+                            <h1 class="text-4xl font-bold mb-1">{{ currentTrack.title }}</h1>
+                            <p class="text-lg text-vision-secondary-light dark:text-vision-secondary-dark cursor-pointer" @click="showArtistInfo">{{ currentTrack.artist }}</p>
+                            <p class="text-md text-vision-secondary-light dark:text-vision-secondary-dark mt-1" v-if="currentTrack.album && currentTrack.album !== 'Unknown Album'">{{ currentTrack.album }}</p>
+                        </div>
+
+                        <!-- Visualization Section -->
+                        <div class="flex-1 flex items-center justify-end">
+                            <div class="relative w-[320px] h-[320px]">
+                                <div class="circular-display">
+                                    <canvas id="rippleCanvas" class="absolute inset-0 w-full h-full mix-blend-color-burn"></canvas>
+                                    <img :src="currentTrack.coverArt" :alt="currentTrack.title" 
+                                        class="w-full h-full object-cover rounded-full opacity-95">
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Visualization Section -->
-                    <div class="flex-1 flex items-center justify-end">
-                        <div class="relative w-[300px] h-[300px]">
-                            <div class="absolute inset-0 rounded-full border-2 border-gray-300 dark:border-gray-600">
+                    <!-- Desktop Layout -->
+                    <div class="hidden md:block">
+                        <div class="player-header">
+                            <h1 class="track-title font-bashontaitoru">{{ currentTrack.title }}</h1>
+                            <div class="flex items-center gap-2">
+                                <p class="track-artist cursor-pointer" @click="showArtistInfo">{{ currentTrack.artist }}</p>
+                                <span v-if="currentTrack.album && currentTrack.album !== 'Unknown Album'" class="text-vision-secondary-light dark:text-vision-secondary-dark">• {{ currentTrack.album }}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="player-main">
+                            <div class="circular-display">
                                 <canvas id="rippleCanvas" class="absolute inset-0 w-full h-full mix-blend-color-burn"></canvas>
                                 <img :src="currentTrack.coverArt" :alt="currentTrack.title" 
-                                    class="w-full h-full object-cover rounded-full opacity-90">
+                                    class="w-full h-full object-cover rounded-full">
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Desktop Layout -->
-                <div class="hidden md:block">
-                    <div class="player-header">
-                        <h1 class="track-title font-bashontaitoru" >{{ currentTrack.title }}</h1>
-                        <p class="track-artist cursor-pointer" @click="showArtistInfo">{{ currentTrack.artist }}</p>
-                    </div>
-                    
-                    <div class="player-main">
-                        <div class="circular-display">
-                            <canvas id="rippleCanvas" class="absolute inset-0 w-full h-full mix-blend-color-burn"></canvas>
-                            <img :src="currentTrack.coverArt" :alt="currentTrack.title" 
-                                class="w-full h-full object-cover rounded-full">
+                <!-- Lyrics View -->
+                <div v-else-if="currentView === 'lyrics'" key="lyrics" class="h-full flex relative">
+                    <!-- Main content area -->
+                    <div class="flex-1 flex flex-col">
+                        <!-- Top bar -->
+                        <div class="h-0 bg-transparent flex items-center justify-end px-4">
                         </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Lyrics View -->
-            <div v-if="currentView === 'lyrics'" class="h-full flex relative">
-                <!-- Main content area - Now takes full width -->
-                <div class="flex-1 flex flex-col">
-                    <!-- Top bar with play/pause control -->
-                    <div class="h-0 bg-white dark:bg-black/0 border-b border-gray-300 dark:border-gray-800 flex items-center justify-end px-4">
-                    </div>
-
-                    <!-- Lyrics content -->
-                    <div ref="lyricsContainer" class="flex-1 overflow-hidden relative">
-                        <div class="lyrics-content absolute w-full transition-transform duration-500 ease-out p-4"
-                            :style="{ transform: `translateY(${lyricsTranslateY}px)` }">
-                            <div 
-                                v-for="(line, index) in displayedLyrics" 
-                                :key="index"
-                                :ref="'lyricLine_' + index"
-                                class="lyric-line mb-6 transition-all duration-300 ease-out"
-                                :class="{
-                                    'text-3xl font-bold': index === activeLyricIndex,
-                                    'text-xl text-apple-secondary-light dark:text-apple-secondary-dark': index !== activeLyricIndex,
-                                    'text-right': line.isRightAligned,
-                                    'text-left': !line.isRightAligned
-                                }"
-                            >
-                                <p>
-                                    <span v-for="(part, partIndex) in line.parts" :key="partIndex"
-                                        :class="{'harmony': part.isHarmony}">
-                                        {{ part.text }}
-                                    </span>
-                                </p>
-                                <p v-if="line.translation" 
-                                class="mt-1 text-lg text-apple-secondary-light dark:text-apple-secondary-dark"
-                                :class="{ 'font-semibold': index === activeLyricIndex }">
-                                    {{ line.translation }}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <input type="file" ref="lyricsInput" @change="handleLyricsImport" accept=".lrc,.txt" class="hidden">
-                <input type="file" ref="translationInput" @change="handleTranslationImport" accept=".lrc,.txt" class="hidden">
-            </div>
-
-           <!-- Settings View -->
-<div v-if="currentView === 'settings'" class="min-h-screen bg-transparent">
-    <div class="max-w-3xl mx-auto p-6 md:p-8">
-        <!-- Header -->
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 border-b border-gray-200 dark:border-gray-700 pb-6">
-            <h1 class="text-4xl font-semibold text-apple-text-light dark:text-apple-text-dark">{{ $t('settings') }}</h1>
-            <div class="flex flex-wrap items-center gap-3">
-                <button @click="exportData" class="px-4 py-2 text-sm bg-apple-highlight-light dark:bg-apple-highlight-dark text-white hover:opacity-90 transition flex items-center gap-2">
-                    <i data-feather="download" class="w-4 h-4"></i>
-                    {{ $t('exportData') }}
-                </button>
-                <button @click="importData" class="px-4 py-2 text-sm border border-apple-highlight-light dark:border-apple-highlight-dark text-apple-highlight-light dark:text-apple-highlight-dark hover:bg-apple-highlight-light/10 dark:hover:bg-apple-highlight-dark/10 transition flex items-center gap-2">
-                    <i data-feather="upload" class="w-4 h-4"></i>
-                    {{ $t('importData') }}
-                </button>
-            </div>
-        </div>
-        
-        <!-- Settings Sections -->
-        <div class="space-y-6">
-            <!-- General Settings -->
-            <section class="bg-white/70 dark:bg-gray-800/70 backdrop-blur-lg p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
-                <div class="flex items-center justify-between mb-6">
-                    <h2 class="text-xl font-semibold text-apple-text-light dark:text-apple-text-dark flex items-center gap-2">
-                        <i data-feather="settings" class="w-5 h-5"></i>
-                        {{ $t('generalSettings') }}
-                    </h2>
-                </div>
-                
-                <div class="space-y-6">
-                    <!-- Language Selector -->
-                    <div class="sm:flex sm:items-center sm:justify-between sm:gap-4">
-                        <label class="block text-sm font-medium mb-2 sm:mb-0 text-apple-text-light dark:text-apple-text-dark sm:w-1/3">
-                            {{ $t('language') }}
-                        </label>
-                        <div class="relative sm:w-2/3">
-                            <select v-model="$i18n.locale" 
-                                    class="w-full p-3 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 text-apple-text-light dark:text-apple-text-dark appearance-none hover:border-apple-highlight-light dark:hover:border-apple-highlight-dark transition-colors pr-10">
-                                <option value="en">English (United States)</option>
-                                <option value="zh">中文（中华人民共和国）</option>
-                                <option value="zh_TW">繁體中文（中國台灣）</option>
-                                <option value="ja">日本語（日本）</option>
-                                <option value="jakanjionly">日本語（偽中国語）</option>
-                                <option value="ko_KP">조선어(조선민주주의인민공화국)</option>
-                            </select>
-                            <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none">
-                                <i data-feather="chevron-down" class="w-4 h-4 text-gray-500 dark:text-gray-400"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Theme Toggle -->
-                    <div class="sm:flex sm:items-center sm:justify-between sm:gap-4 pt-4 border-t border-gray-100 dark:border-gray-700">
-                        <label class="block text-sm font-medium mb-2 sm:mb-0 text-apple-text-light dark:text-apple-text-dark sm:w-1/3">
-                            {{ $t('theme') }}
-                        </label>
-                        <div class="sm:w-2/3">
-                            <button @click="toggleDarkMode" 
-                                    class="w-full p-3 border border-gray-200 dark:border-gray-600 hover:border-apple-highlight-light dark:hover:border-apple-highlight-dark transition-colors flex items-center justify-between">
-                                <span class="text-apple-text-light dark:text-apple-text-dark flex items-center gap-2">
-                                    <i data-feather="moon" v-if="!isDarkMode" class="w-4 h-4"></i>
-                                    <i data-feather="sun" v-else class="w-4 h-4"></i>
-                                    {{ isDarkMode ? $t('lightMode') : $t('darkMode') }}
-                                </span>
-                                <div class="w-10 h-5 bg-gray-200 dark:bg-gray-700 relative">
-                                    <div class="absolute w-4 h-4 bg-apple-highlight-light dark:bg-apple-highlight-dark top-0.5" 
-                                        :class="isDarkMode ? 'right-0.5' : 'left-0.5'"></div>
+                        <!-- Lyrics content -->
+                        <div ref="lyricsContainer" class="flex-1 overflow-hidden relative">
+                            <div class="lyrics-content absolute w-full transition-transform duration-500 ease-out p-4"
+                                :style="{ transform: `translateY(${lyricsTranslateY}px)` }">
+                                <div 
+                                    v-for="(line, index) in displayedLyrics" 
+                                    :key="index"
+                                    :ref="'lyricLine_' + index"
+                                    class="lyric-line mb-6 transition-all duration-300 ease-out"
+                                    :class="{
+                                        'text-3xl font-bold': index === activeLyricIndex,
+                                        'text-xl text-vision-secondary-light dark:text-vision-secondary-dark': index !== activeLyricIndex,
+                                        'text-right': line.isRightAligned,
+                                        'text-left': !line.isRightAligned
+                                    }"
+                                >
+                                    <p>
+                                        <span v-for="(part, partIndex) in line.parts" :key="partIndex"
+                                            :class="{'harmony': part.isHarmony}">
+                                            {{ part.text }}
+                                        </span>
+                                    </p>
+                                    <p v-if="line.translation" 
+                                    class="mt-1 text-lg text-vision-secondary-light dark:text-vision-secondary-dark"
+                                    :class="{ 'font-semibold': index === activeLyricIndex }">
+                                        {{ line.translation }}
+                                    </p>
                                 </div>
-                            </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
 
-            <!-- Audio Settings -->
-            <section class="bg-white/70 dark:bg-gray-800/70 backdrop-blur-lg p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
-                <div class="flex items-center justify-between mb-6">
-                    <h2 class="text-xl font-semibold text-apple-text-light dark:text-apple-text-dark flex items-center gap-2">
-                        <i data-feather="volume-2" class="w-5 h-5"></i>
-                        {{ $t('audioSettings') }}
-                    </h2>
+                    <input type="file" ref="lyricsInput" @change="handleLyricsImport" accept=".lrc,.txt" class="hidden">
+                    <input type="file" ref="translationInput" @change="handleTranslationImport" accept=".lrc,.txt" class="hidden">
                 </div>
-                
-                <div class="space-y-6">
-                    <div class="sm:flex sm:items-center sm:justify-between sm:gap-4">
-                        <div class="flex items-center justify-between mb-2 sm:mb-0 sm:w-1/3">
-                            <label class="text-sm font-medium text-apple-text-light dark:text-apple-text-dark">
-                                {{ $t('volume') }}
-                            </label>
-                        </div>
-                        <div class="sm:w-2/3">
-                            <div class="flex items-center gap-3">
-                                <i data-feather="volume-1" class="w-4 h-4 text-gray-500 dark:text-gray-400"></i>
-                                <div class="flex-1 relative">
-                                    <input type="range" v-model="volume" min="0" max="100" 
-                                        class="w-full h-2 appearance-none bg-gray-200 dark:bg-gray-600 accent-apple-highlight-light dark:accent-apple-highlight-dark">
+
+                <!-- Settings View -->
+                <div v-else-if="currentView === 'settings'" key="settings" class="min-h-screen bg-transparent">
+                    <!-- Mobile Layout for Settings -->
+                    <div class="md:hidden min-h-screen bg-transparent">
+                        <div class="p-4">
+                            <!-- Mobile Header -->
+                            <div class="flex items-center justify-between mb-6 pb-4 border-b border-white/20 dark:border-white/10">
+                                <h1 class="text-2xl font-semibold text-vision-text-light dark:text-vision-text-dark">{{ $t('settings') }}</h1>
+                                <div class="flex items-center space-x-2">
+                                    <button @click="exportData" class="vision-button p-2 rounded-full">
+                                        <i data-feather="download" class="w-4 h-4"></i>
+                                    </button>
+                                    <button @click="importData" class="vision-button p-2 rounded-full">
+                                        <i data-feather="upload" class="w-4 h-4"></i>
+                                    </button>
                                 </div>
-                                <i data-feather="volume-2" class="w-4 h-4 text-gray-500 dark:text-gray-400"></i>
-                                <span class="text-xs text-gray-500 dark:text-gray-400 w-8 text-right">{{ volume }}%</span>
+                            </div>
+                            
+                            <!-- Mobile Settings Sections -->
+                            <div class="space-y-4">
+                                <!-- General Settings -->
+                                <section class="vision-glass-heavy p-4 rounded-xl">
+                                    <h2 class="text-lg font-semibold text-vision-text-light dark:text-vision-text-dark flex items-center gap-2 mb-4">
+                                        <i data-feather="settings" class="w-4 h-4"></i>
+                                        {{ $t('generalSettings') }}
+                                    </h2>
+                                    
+                                    <div class="space-y-4">
+                                        <!-- Language Selector -->
+                                        <div>
+                                            <label class="block text-sm font-medium mb-2 text-vision-text-light dark:text-vision-text-dark">
+                                                {{ $t('language') }}
+                                            </label>
+                                            <select v-model="$i18n.locale" 
+                                                    class="vision-input w-full p-3 text-vision-text-light dark:text-vision-text-dark appearance-none">
+                                                <option value="en">English (United States)</option>
+                                                <option value="zh">中文（中华人民共和国）</option>
+                                                <option value="zh_TW">繁體中文（中國台灣）</option>
+                                                <option value="ja">日本語（日本）</option>
+                                                <option value="jakanjionly">日本語（偽中国語）</option>
+                                                <option value="ko_KP">조선어(조선민주주의인민공화국)</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Theme Toggle -->
+                                        <div>
+                                            <label class="block text-sm font-medium mb-2 text-vision-text-light dark:text-vision-text-dark">
+                                                {{ $t('theme') }}
+                                            </label>
+                                            <button @click="toggleDarkMode" 
+                                                    class="vision-button w-full p-3 flex items-center justify-between rounded-xl">
+                                                <span class="text-vision-text-light dark:text-vision-text-dark flex items-center gap-2">
+                                                    <i data-feather="moon" v-if="!isDarkMode" class="w-4 h-4"></i>
+                                                    <i data-feather="sun" v-else class="w-4 h-4"></i>
+                                                    {{ isDarkMode ? $t('lightMode') : $t('darkMode') }}
+                                                </span>
+                                                <div class="w-10 h-5 bg-white/20 dark:bg-white/10 rounded-full relative">
+                                                    <div class="absolute w-4 h-4 bg-vision-accent-light dark:bg-vision-accent-dark rounded-full top-0.5 transition-all duration-300" 
+                                                        :class="isDarkMode ? 'right-0.5' : 'left-0.5'"></div>
+                                                </div>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <!-- Audio Settings -->
+                                <section class="vision-glass-heavy p-4 rounded-xl">
+                                    <h2 class="text-lg font-semibold text-vision-text-light dark:text-vision-text-dark flex items-center gap-2 mb-4">
+                                        <i data-feather="volume-2" class="w-4 h-4"></i>
+                                        {{ $t('audioSettings') }}
+                                    </h2>
+                                    
+                                    <div>
+                                        <label class="block text-sm font-medium mb-2 text-vision-text-light dark:text-vision-text-dark">
+                                            {{ $t('volume') }}
+                                        </label>
+                                        <div class="flex items-center gap-3">
+                                            <i data-feather="volume-1" class="w-4 h-4 text-vision-secondary-light dark:text-vision-secondary-dark"></i>
+                                            <div class="flex-1">
+                                                <input type="range" v-model="volume" min="0" max="100" 
+                                                    class="w-full h-2 appearance-none bg-white/20 dark:bg-white/10 rounded-full accent-vision-accent-light dark:accent-vision-accent-dark">
+                                            </div>
+                                            <i data-feather="volume-2" class="w-4 h-4 text-vision-secondary-light dark:text-vision-secondary-dark"></i>
+                                            <span class="text-xs text-vision-secondary-light dark:text-vision-secondary-dark w-8 text-right">{{ volume }}%</span>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <!-- Performance Settings -->
+                                <section class="vision-glass-heavy p-4 rounded-xl">
+                                    <h2 class="text-lg font-semibold text-vision-text-light dark:text-vision-text-dark flex items-center gap-2 mb-4">
+                                        <i data-feather="cpu" class="w-4 h-4"></i>
+                                        {{ $t('performanceSettings') }}
+                                    </h2>
+                                    
+                                    <div class="space-y-4">
+                                        <div>
+                                            <label class="block text-sm font-medium mb-2 text-vision-text-light dark:text-vision-text-dark">
+                                                {{ $t('performanceMode') }}
+                                            </label>
+                                            <button @click="togglePerformanceMode" 
+                                                    class="vision-button w-full p-3 flex items-center justify-between rounded-xl">
+                                                <span class="flex items-center gap-2">
+                                                    <i data-feather="zap" class="w-4 h-4"></i>
+                                                    {{ !performanceMode ? $t('enablePerformanceMode') : 
+                                                    (performanceMode && !extremePerformanceMode) ? $t('enableExtremePerformanceMode') : 
+                                                    $t('disablePerformanceMode') }}
+                                                </span>
+                                                <div v-if="performanceMode" class="flex">
+                                                    <div class="w-2 h-2 bg-vision-accent-light dark:bg-vision-accent-dark rounded-full animate-pulse mr-1"></div>
+                                                    <div v-if="extremePerformanceMode" class="w-2 h-2 bg-vision-accent-light dark:bg-vision-accent-dark rounded-full animate-pulse mr-1"></div>
+                                                </div>
+                                            </button>
+                                        </div>
+
+                                        <div>
+                                            <div class="flex items-center justify-between">
+                                                <label class="text-sm font-medium text-vision-text-light dark:text-vision-text-dark flex items-center gap-2">
+                                                    <i data-feather="layers" class="w-4 h-4"></i>
+                                                    {{ $t('enableBackgroundEffects') }}
+                                                </label>
+                                                <div class="relative inline-block w-12 h-6 bg-white/20 dark:bg-white/10 rounded-full cursor-pointer" @click="backgroundEffects = !backgroundEffects">
+                                                    <div class="absolute w-5 h-5 bg-vision-accent-light dark:bg-vision-accent-dark rounded-full top-0.5 transition-all duration-300"
+                                                        :class="backgroundEffects ? 'right-0.5' : 'left-0.5'"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div>
+                                            <label class="block text-sm font-medium mb-2 text-vision-text-light dark:text-vision-text-dark flex items-center gap-2">
+                                                <i data-feather="image" class="w-4 h-4"></i>
+                                                Background Material
+                                            </label>
+                                            <button @click="toggleBackgroundMode" 
+                                                    class="vision-button w-full p-3 flex items-center justify-between rounded-xl">
+                                                <span class="text-vision-text-light dark:text-vision-text-dark flex items-center gap-2">
+                                                    <i data-feather="image" class="w-4 h-4"></i>
+                                                    {{ backgroundMode === 1 ? 'Arcylic' : 'Mica' }}
+                                                </span>
+                                                <div class="w-10 h-5 bg-white/20 dark:bg-white/10 rounded-full relative">
+                                                    <div class="absolute w-4 h-4 bg-vision-accent-light dark:bg-vision-accent-dark rounded-full top-0.5 transition-all duration-300" 
+                                                        :class="backgroundMode === 2 ? 'right-0.5' : 'left-0.5'"></div>
+                                                </div>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <!-- Data Management -->
+                                <section class="vision-glass-heavy p-4 rounded-xl">
+                                    <h2 class="text-lg font-semibold text-vision-text-light dark:text-vision-text-dark flex items-center gap-2 mb-4">
+                                        <i data-feather="database" class="w-4 h-4"></i>
+                                        {{ $t('dataManagement') }}
+                                    </h2>
+                                    
+                                    <button @click="clearData" 
+                                            class="w-full p-3 bg-red-500/20 hover:bg-red-500/30 text-red-400 border border-red-500/30 rounded-xl backdrop-blur-20 transition-all duration-300 flex items-center justify-between">
+                                        <span class="flex items-center gap-2">
+                                            <i data-feather="trash-2" class="w-4 h-4"></i>
+                                            {{ $t('clearAllData') }}
+                                        </span>
+                                        <i data-feather="alert-triangle" class="w-4 h-4"></i>
+                                    </button>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Desktop Layout for Settings -->
+                    <div class="hidden md:block min-h-screen bg-transparent">
+                        <div class="max-w-3xl mx-auto p-6 md:p-8">
+                            <!-- Header -->
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 border-b border-white/20 dark:border-white/10 pb-6">
+                                <h1 class="text-4xl font-semibold text-vision-text-light dark:text-vision-text-dark">{{ $t('settings') }}</h1>
+                                <div class="flex flex-wrap items-center gap-3">
+                                    <button @click="exportData" class="vision-button px-4 py-2 text-sm flex items-center gap-2">
+                                        <i data-feather="download" class="w-4 h-4"></i>
+                                        {{ $t('exportData') }}
+                                    </button>
+                                    <button @click="importData" class="vision-button px-4 py-2 text-sm flex items-center gap-2">
+                                        <i data-feather="upload" class="w-4 h-4"></i>
+                                        {{ $t('importData') }}
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Settings Sections -->
+                            <div class="space-y-6">
+                                <!-- General Settings -->
+                                <section class="vision-glass-heavy p-6">
+                                    <div class="flex items-center justify-between mb-6">
+                                        <h2 class="text-xl font-semibold text-vision-text-light dark:text-vision-text-dark flex items-center gap-2">
+                                            <i data-feather="settings" class="w-5 h-5"></i>
+                                            {{ $t('generalSettings') }}
+                                        </h2>
+                                    </div>
+                                    
+                                    <div class="space-y-6">
+                                        <!-- Language Selector -->
+                                        <div class="sm:flex sm:items-center sm:justify-between sm:gap-4">
+                                            <label class="block text-sm font-medium mb-2 sm:mb-0 text-vision-text-light dark:text-vision-text-dark sm:w-1/3">
+                                                {{ $t('language') }}
+                                            </label>
+                                            <div class="relative sm:w-2/3">
+                                                <select v-model="$i18n.locale" 
+                                                        class="vision-input w-full p-3 text-vision-text-light dark:text-vision-text-dark appearance-none pr-10">
+                                                    <option value="en">English (United States)</option>
+                                                    <option value="zh">中文（中华人民共和国）</option>
+                                                    <option value="zh_TW">繁體中文（中國台灣）</option>
+                                                    <option value="ja">日本語（日本）</option>
+                                                    <option value="jakanjionly">日本語（偽中国語）</option>
+                                                    <option value="ko_KP">조선어(조선민주주의인민공화국)</option>
+                                                </select>
+                                                <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none">
+                                                    <i data-feather="chevron-down" class="w-4 h-4 text-vision-secondary-light dark:text-vision-secondary-dark"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Theme Toggle -->
+                                        <div class="sm:flex sm:items-center sm:justify-between sm:gap-4 pt-4 border-t border-white/10 dark:border-white/5">
+                                            <label class="block text-sm font-medium mb-2 sm:mb-0 text-vision-text-light dark:text-vision-text-dark sm:w-1/3">
+                                                {{ $t('theme') }}
+                                            </label>
+                                            <div class="sm:w-2/3">
+                                                <button @click="toggleDarkMode" 
+                                                        class="vision-button w-full p-3 flex items-center justify-between">
+                                                    <span class="text-vision-text-light dark:text-vision-text-dark flex items-center gap-2">
+                                                        <i data-feather="moon" v-if="!isDarkMode" class="w-4 h-4"></i>
+                                                        <i data-feather="sun" v-else class="w-4 h-4"></i>
+                                                        {{ isDarkMode ? $t('lightMode') : $t('darkMode') }}
+                                                    </span>
+                                                    <div class="w-10 h-5 bg-white/20 dark:bg-white/10 rounded-full relative">
+                                                        <div class="absolute w-4 h-4 bg-vision-accent-light dark:bg-vision-accent-dark rounded-full top-0.5 transition-all duration-300" 
+                                                            :class="isDarkMode ? 'right-0.5' : 'left-0.5'"></div>
+                                                    </div>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <!-- Audio Settings -->
+                                <section class="vision-glass-heavy p-6">
+                                    <div class="flex items-center justify-between mb-6">
+                                        <h2 class="text-xl font-semibold text-vision-text-light dark:text-vision-text-dark flex items-center gap-2">
+                                            <i data-feather="volume-2" class="w-5 h-5"></i>
+                                            {{ $t('audioSettings') }}
+                                        </h2>
+                                    </div>
+                                    
+                                    <div class="space-y-6">
+                                        <div class="sm:flex sm:items-center sm:justify-between sm:gap-4">
+                                            <div class="flex items-center justify-between mb-2 sm:mb-0 sm:w-1/3">
+                                                <label class="text-sm font-medium text-vision-text-light dark:text-vision-text-dark">
+                                                    {{ $t('volume') }}
+                                                </label>
+                                            </div>
+                                            <div class="sm:w-2/3">
+                                                <div class="flex items-center gap-3">
+                                                    <i data-feather="volume-1" class="w-4 h-4 text-vision-secondary-light dark:text-vision-secondary-dark"></i>
+                                                    <div class="flex-1 relative">
+                                                        <input type="range" v-model="volume" min="0" max="100" 
+                                                            class="w-full h-2 appearance-none bg-white/20 dark:bg-white/10 rounded-full accent-vision-accent-light dark:accent-vision-accent-dark">
+                                                    </div>
+                                                    <i data-feather="volume-2" class="w-4 h-4 text-vision-secondary-light dark:text-vision-secondary-dark"></i>
+                                                    <span class="text-xs text-vision-secondary-light dark:text-vision-secondary-dark w-8 text-right">{{ volume }}%</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <!-- Performance Settings -->
+                                <section class="vision-glass-heavy p-6">
+                                    <div class="flex items-center justify-between mb-6">
+                                        <h2 class="text-xl font-semibold text-vision-text-light dark:text-vision-text-dark flex items-center gap-2">
+                                            <i data-feather="cpu" class="w-5 h-5"></i>
+                                            {{ $t('performanceSettings') }}
+                                        </h2>
+                                    </div>
+                                    
+                                    <div class="space-y-6">
+                                        <div class="sm:flex sm:items-center sm:justify-between sm:gap-4">
+                                            <label class="block text-sm font-medium mb-2 sm:mb-0 text-vision-text-light dark:text-vision-text-dark sm:w-1/3">
+                                                {{ $t('performanceMode') }}
+                                            </label>
+                                            <div class="sm:w-2/3">
+                                                <button @click="togglePerformanceMode" 
+                                                        class="vision-button w-full p-3 flex items-center justify-between">
+                                                    <span class="flex items-center gap-2">
+                                                        <i data-feather="zap" class="w-4 h-4"></i>
+                                                        {{ !performanceMode ? $t('enablePerformanceMode') : 
+                                                        (performanceMode && !extremePerformanceMode) ? $t('enableExtremePerformanceMode') : 
+                                                        $t('disablePerformanceMode') }}
+                                                    </span>
+                                                    <div v-if="performanceMode" class="flex">
+                                                        <div class="w-2 h-2 bg-vision-accent-light dark:bg-vision-accent-dark rounded-full animate-pulse mr-1"></div>
+                                                        <div v-if="extremePerformanceMode" class="w-2 h-2 bg-vision-accent-light dark:bg-vision-accent-dark rounded-full animate-pulse mr-1"></div>
+                                                    </div>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div class="sm:flex sm:items-center sm:justify-between sm:gap-4 pt-4 border-t border-white/10 dark:border-white/5">
+                                            <label class="block text-sm font-medium mb-2 sm:mb-0 text-vision-text-light dark:text-vision-text-dark sm:w-1/3 flex items-center gap-2">
+                                                <i data-feather="layers" class="w-4 h-4"></i>
+                                                {{ $t('enableBackgroundEffects') }}
+                                            </label>
+                                            <div class="sm:w-2/3 flex justify-end">
+                                                <div class="relative inline-block w-12 h-6 bg-white/20 dark:bg-white/10 rounded-full cursor-pointer" @click="backgroundEffects = !backgroundEffects">
+                                                    <div class="absolute w-5 h-5 bg-vision-accent-light dark:bg-vision-accent-dark rounded-full top-0.5 transition-all duration-300"
+                                                        :class="backgroundEffects ? 'right-0.5' : 'left-0.5'"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="sm:flex sm:items-center sm:justify-between sm:gap-4 pt-4 border-t border-white/10 dark:border-white/5">
+                                            <label class="block text-sm font-medium mb-2 sm:mb-0 text-vision-text-light dark:text-vision-text-dark sm:w-1/3 flex items-center gap-2">
+                                                <i data-feather="image" class="w-4 h-4"></i>
+                                                Background Material
+                                            </label>
+                                            <div class="sm:w-2/3">
+                                                <button @click="toggleBackgroundMode" 
+                                                        class="vision-button w-full p-3 flex items-center justify-between">
+                                                    <span class="text-vision-text-light dark:text-vision-text-dark flex items-center gap-2">
+                                                        <i data-feather="image" class="w-4 h-4"></i>
+                                                        {{ backgroundMode === 1 ? 'Arcylic' : 'Mica' }}
+                                                    </span>
+                                                    <div class="w-10 h-5 bg-white/20 dark:bg-white/10 rounded-full relative">
+                                                        <div class="absolute w-4 h-4 bg-vision-accent-light dark:bg-vision-accent-dark rounded-full top-0.5 transition-all duration-300" 
+                                                            :class="backgroundMode === 2 ? 'right-0.5' : 'left-0.5'"></div>
+                                                    </div>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <!-- Data Management -->
+                                <section class="vision-glass-heavy p-6">
+                                    <div class="flex items-center justify-between mb-6">
+                                        <h2 class="text-xl font-semibold text-vision-text-light dark:text-vision-text-dark flex items-center gap-2">
+                                            <i data-feather="database" class="w-5 h-5"></i>
+                                            {{ $t('dataManagement') }}
+                                        </h2>
+                                    </div>
+                                    
+                                    <div class="space-y-4">
+                                        <button @click="clearData" 
+                                                class="w-full p-3 bg-red-500/20 hover:bg-red-500/30 text-red-400 border border-red-500/30 rounded-xl backdrop-blur-20 transition-all duration-300 flex items-center justify-between">
+                                            <span class="flex items-center gap-2">
+                                                <i data-feather="trash-2" class="w-4 h-4"></i>
+                                                {{ $t('clearAllData') }}
+                                            </span>
+                                            <i data-feather="alert-triangle" class="w-4 h-4"></i>
+                                        </button>
+                                    </div>
+                                </section>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
-
-            <!-- Performance Settings -->
-            <section class="bg-white/70 dark:bg-gray-800/70 backdrop-blur-lg p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
-                <div class="flex items-center justify-between mb-6">
-                    <h2 class="text-xl font-semibold text-apple-text-light dark:text-apple-text-dark flex items-center gap-2">
-                        <i data-feather="cpu" class="w-5 h-5"></i>
-                        {{ $t('performanceSettings') }}
-                    </h2>
-                </div>
-                
-                <div class="space-y-6">
-                    <div class="sm:flex sm:items-center sm:justify-between sm:gap-4">
-                        <label class="block text-sm font-medium mb-2 sm:mb-0 text-apple-text-light dark:text-apple-text-dark sm:w-1/3">
-                            {{ $t('performanceMode') }}
-                        </label>
-                        <div class="sm:w-2/3">
-                            <button @click="togglePerformanceMode" 
-                                    class="w-full p-3 bg-apple-highlight-light dark:bg-apple-highlight-dark text-white hover:opacity-90 transition-opacity flex items-center justify-between">
-                                <span class="flex items-center gap-2">
-                                    <i data-feather="zap" class="w-4 h-4"></i>
-                                    {{ !performanceMode ? $t('enablePerformanceMode') : 
-                                    (performanceMode && !extremePerformanceMode) ? $t('enableExtremePerformanceMode') : 
-                                    $t('disablePerformanceMode') }}
-                                </span>
-                                <div v-if="performanceMode" class="flex">
-                                    <div class="w-2 h-2 bg-white animate-pulse mr-1"></div>
-                                    <div v-if="extremePerformanceMode" class="w-2 h-2 bg-white animate-pulse mr-1"></div>
-                                </div>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="sm:flex sm:items-center sm:justify-between sm:gap-4 pt-4 border-t border-gray-100 dark:border-gray-700">
-                        <label class="block text-sm font-medium mb-2 sm:mb-0 text-apple-text-light dark:text-apple-text-dark sm:w-1/3 flex items-center gap-2">
-                            <i data-feather="layers" class="w-4 h-4"></i>
-                            {{ $t('enableBackgroundEffects') }}
-                        </label>
-                        <div class="sm:w-2/3 flex justify-end">
-                            <div class="relative inline-block w-12 h-6 bg-gray-200 dark:bg-gray-700 cursor-pointer" @click="backgroundEffects = !backgroundEffects">
-                                <div class="absolute w-5 h-5 bg-apple-highlight-light dark:bg-apple-highlight-dark top-0.5 transition-all duration-200"
-                                    :class="backgroundEffects ? 'right-0.5' : 'left-0.5'"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Data Management -->
-            <section class="bg-white/70 dark:bg-gray-800/70 backdrop-blur-lg p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
-                <div class="flex items-center justify-between mb-6">
-                    <h2 class="text-xl font-semibold text-apple-text-light dark:text-apple-text-dark flex items-center gap-2">
-                        <i data-feather="database" class="w-5 h-5"></i>
-                        {{ $t('dataManagement') }}
-                    </h2>
-                </div>
-                
-                <div class="space-y-4">
-                    <button @click="clearData" 
-                            class="w-full p-3 bg-red-500 hover:bg-red-600 text-white transition-colors flex items-center justify-between">
-                        <span class="flex items-center gap-2">
-                            <i data-feather="trash-2" class="w-4 h-4"></i>
-                            {{ $t('clearAllData') }}
-                        </span>
-                        <i data-feather="alert-triangle" class="w-4 h-4"></i>
-                    </button>
-                </div>
-            </section>
-        </div>
-    </div>
-</div>
-
+            </transition>
         </main>
 
         <!-- Footer -->
-<footer class="bg-transparent text-black dark:text-white">
-    <div class="footer-content">
-        <!-- Top Navigation -->
-        <div class="h-12 flex items-center justify-between px-4 sm:px-6 border-b border-gray-300 dark:border-gray-800">
-            <div class="flex items-center space-x-4 sm:space-x-8">
-                <button @click="currentView = 'library'" class="flex items-center space-x-2 text-sm hover:text-apple-highlight-dark dark:hover:text-apple-highlight-light transition-all duration-200 hover:scale-105">
-                    <i data-feather="music" class="w-5 h-5 transition-transform duration-200 hover:rotate-12"></i>
-                    <span class="hidden sm:inline">{{ $t('library') }}</span>
-                </button>
-                <button @click="currentView = 'nowPlaying'" class="flex items-center space-x-2 text-sm hover:text-apple-highlight-dark dark:hover:text-apple-highlight-light transition-all duration-200 hover:scale-105">
-                    <i data-feather="list" class="w-5 h-5 transition-transform duration-200 hover:-translate-y-0.5"></i>
-                    <span class="hidden sm:inline">{{ $t('nowPlaying') }}</span>
-                </button>
-                <button @click="currentView = 'lyrics'" class="flex items-center space-x-2 text-sm hover:text-apple-highlight-dark dark:hover:text-apple-highlight-light transition-all duration-200 hover:scale-105">
-                    <i data-feather="file-text" class="w-5 h-5 transition-transform duration-200 hover:translate-y-0.5"></i>
-                    <span class="hidden sm:inline">{{ $t('lyrics') }}</span>
-                </button>
-                <button @click="currentView = 'settings'" class="flex items-center space-x-2 text-sm hover:text-apple-highlight-dark dark:hover:text-apple-highlight-light transition-all duration-200 hover:scale-105">
-                    <i data-feather="settings" class="w-5 h-5 transition-transform duration-200 hover:rotate-45"></i>
-                    <span class="hidden sm:inline">{{ $t('settings') }}</span>
-                </button>
+        <footer class="bg-transparent text-vision-text-light dark:text-vision-text-dark">
+            <div class="footer-content">
+                <!-- Top Navigation -->
+                <div class="h-12 flex items-center justify-between px-4 sm:px-6 border-b border-white/20 dark:border-white/10">
+                    <div class="flex items-center space-x-4 sm:space-x-8">
+                        <button @click="currentView = 'library'" class="flex items-center space-x-2 text-sm hover:text-vision-accent-light dark:hover:text-vision-accent-dark transition-all duration-200 hover:scale-105">
+                            <i data-feather="music" class="w-5 h-5 transition-transform duration-200 hover:rotate-12"></i>
+                            <span class="hidden sm:inline">{{ $t('library') }}</span>
+                        </button>
+                        <button @click="currentView = 'nowPlaying'" class="flex items-center space-x-2 text-sm hover:text-vision-accent-light dark:hover:text-vision-accent-dark transition-all duration-200 hover:scale-105">
+                            <i data-feather="list" class="w-5 h-5 transition-transform duration-200 hover:-translate-y-0.5"></i>
+                            <span class="hidden sm:inline">{{ $t('nowPlaying') }}</span>
+                        </button>
+                        <button @click="currentView = 'lyrics'" class="flex items-center space-x-2 text-sm hover:text-vision-accent-light dark:hover:text-vision-accent-dark transition-all duration-200 hover:scale-105">
+                            <i data-feather="file-text" class="w-5 h-5 transition-transform duration-200 hover:translate-y-0.5"></i>
+                            <span class="hidden sm:inline">{{ $t('lyrics') }}</span>
+                        </button>
+                        <button @click="currentView = 'settings'" class="flex items-center space-x-2 text-sm hover:text-vision-accent-light dark:hover:text-vision-accent-dark transition-all duration-200 hover:scale-105">
+                            <i data-feather="settings" class="w-5 h-5 transition-transform duration-200 hover:rotate-45"></i>
+                            <span class="hidden sm:inline">{{ $t('settings') }}</span>
+                        </button>
+                        
+                        <!-- Separator line - Only visible in lyrics view -->
+                        <div v-if="currentView === 'lyrics'" class="h-5 border-l border-white/20 dark:border-white/10 mx-1"></div>
+                        
+                        <!-- Import buttons - Only visible in lyrics view -->
+                        <button v-if="currentView === 'lyrics'" @click="importLyrics" class="flex items-center space-x-2 text-sm hover:text-vision-accent-light dark:hover:text-vision-accent-dark transition-all duration-200 hover:scale-105">
+                            <i data-feather="upload" class="w-5 h-5 transition-transform duration-200 hover:-translate-y-1"></i>
+                            <span class="hidden sm:inline">{{ $t('importLyrics') }}</span>
+                        </button>
+                        <button v-if="currentView === 'lyrics'" @click="importTranslation" class="flex items-center space-x-2 text-sm hover:text-vision-accent-light dark:hover:text-vision-accent-dark transition-all duration-200 hover:scale-105">
+                            <i data-feather="globe" class="w-5 h-5 transition-transform duration-200 hover:rotate-12"></i>
+                            <span class="hidden sm:inline">{{ $t('importTranslation') }}</span>
+                        </button>
+                    </div>
+                    <div class="text-sm text-vision-secondary-light dark:text-vision-secondary-dark cursor-pointer hover:text-vision-text-light dark:hover:text-vision-text-dark transition-colors duration-200" @click="openModal">
+                        <i data-feather="info" class="w-5 h-5 sm:hidden"></i>
+                        <span class="hidden sm:inline">RELDesktop13.2.0-C20250525-26(Codename:Trailblazer)</span>
+                    </div>
+                </div>
                 
-                <!-- Separator line - Only visible in lyrics view -->
-                <div v-if="currentView === 'lyrics'" class="h-5 border-l border-gray-300 dark:border-gray-700 mx-1"></div>
-                
-                <!-- Import buttons - Only visible in lyrics view -->
-                <button v-if="currentView === 'lyrics'" @click="importLyrics" class="flex items-center space-x-2 text-sm hover:text-apple-highlight-dark dark:hover:text-apple-highlight-light transition-all duration-200 hover:scale-105">
-                    <i data-feather="upload" class="w-5 h-5 transition-transform duration-200 hover:-translate-y-1"></i>
-                    <span class="hidden sm:inline">{{ $t('importLyrics') }}</span>
-                </button>
-                <button v-if="currentView === 'lyrics'" @click="importTranslation" class="flex items-center space-x-2 text-sm hover:text-apple-highlight-dark dark:hover:text-apple-highlight-light transition-all duration-200 hover:scale-105">
-                    <i data-feather="globe" class="w-5 h-5 transition-transform duration-200 hover:rotate-12"></i>
-                    <span class="hidden sm:inline">{{ $t('importTranslation') }}</span>
-                </button>
-            </div>
-            <div class="text-sm text-gray-600 dark:text-gray-400 cursor-pointer hover:text-black dark:hover:text-white transition-colors duration-200" @click="openModal">
-                <i data-feather="info" class="w-5 h-5 sm:hidden"></i>
-                <span class="hidden sm:inline">RELVue213.0.0-C20250430-0501(Codename:RikuhachimaAru/陸八魔亜瑠)</span>
-            </div>
-        </div>
-        
-        <!-- Bottom Playback Controls -->
-        <div class="h-16 flex items-center justify-between sm:justify-start space-x-4 px-4 sm:px-6">
-            <div class="flex items-center space-x-3">
-                <img :src="currentTrack.coverArt" :alt="currentTrack.title" class="w-10 h-10 rounded-full transition-transform duration-200 hover:scale-105">
-                <div class="flex flex-col">
-                    <span class="text-sm font-medium">{{ currentTrack.title }}</span>
-                    <span class="text-xs text-gray-600 dark:text-gray-400 cursor-pointer hover:text-black dark:hover:text-white transition-colors duration-200" @click="showArtistInfo">{{ currentTrack.artist }}</span>
+                <!-- Bottom Playback Controls -->
+                <div class="h-16 flex items-center justify-between sm:justify-start space-x-4 px-4 sm:px-6">
+                    <div class="flex items-center space-x-3">
+                        <img :src="currentTrack.coverArt" :alt="currentTrack.title" class="w-10 h-10 rounded-full transition-transform duration-200 hover:scale-105">
+                        <div class="flex flex-col">
+                            <span class="text-sm font-medium">{{ currentTrack.title }}</span>
+                            <div class="flex text-xs text-vision-secondary-light dark:text-vision-secondary-dark">
+                                <span class="cursor-pointer hover:text-vision-text-light dark:hover:text-vision-text-dark transition-colors duration-200" @click="showArtistInfo">{{ currentTrack.artist }}</span>
+                                <span v-if="currentTrack.album && currentTrack.album !== 'Unknown Album'" class="mx-1">•</span>
+                                <span class="text-vision-secondary-light dark:text-vision-secondary-dark">{{ currentTrack.album !== 'Unknown Album' ? currentTrack.album : '' }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hidden sm:flex flex-1 items-center">
+                        <span 
+                            class="text-sm text-vision-secondary-light dark:text-vision-secondary-dark mr-4"
+                            style="animation: progress-bounce 2s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;"
+                        >{{ formatTime(currentTime) }}/{{ formatTime(duration) }}</span>
+                        <div class="flex-1 h-1 bg-white/20 dark:bg-white/10 rounded-full group">
+                            <div class="h-full bg-vision-accent-light dark:bg-vision-accent-dark rounded-full transition-all duration-300 ease-in-out group-hover:h-2" 
+                                 :style="{ width: `${progress}%` }"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4">
+                        <button @click="playPrevious" class="text-vision-secondary-light hover:text-vision-text-light dark:text-vision-secondary-dark dark:hover:text-vision-text-dark transition-all duration-200 hover:scale-110">
+                            <i data-feather="skip-back" class="w-5 h-5"></i>
+                        </button>
+                        <button @click="togglePlay" class="w-8 h-8 flex items-center justify-center text-vision-text-light dark:text-vision-text-dark transition-all duration-200 hover:scale-110">
+                            <i v-if="isPlaying" data-feather="pause" class="w-5 h-5"></i>
+                            <i v-else data-feather="play" class="w-5 h-5"></i>
+                        </button>
+                        <button @click="playNext" class="text-vision-secondary-light hover:text-vision-text-light dark:text-vision-secondary-dark dark:hover:text-vision-text-dark transition-all duration-200 hover:scale-110">
+                            <i data-feather="skip-forward" class="w-5 h-5"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
-            
-            <div class="hidden sm:flex flex-1 items-center">
-                <span 
-                    class="text-sm text-gray-600 dark:text-gray-400 mr-4"
-                    style="animation: progress-bounce 2s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;"
-                >{{ formatTime(currentTime) }}/{{ formatTime(duration) }}</span>
-                <div class="flex-1 h-1 bg-gray-300 dark:bg-gray-700 rounded-full group">
-                    <div class="h-full bg-apple-highlight-dark rounded-full transition-all duration-300 ease-in-out group-hover:h-2" 
-                         :style="{ width: `${progress}%` }"></div>
-                </div>
-            </div>
-            
-            <div class="flex items-center space-x-4">
-                <button @click="playPrevious" class="text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-all duration-200 hover:scale-110">
-                    <i data-feather="skip-back" class="w-5 h-5"></i>
-                </button>
-                <button @click="togglePlay" class="w-8 h-8 flex items-center justify-center text-black dark:text-white transition-all duration-200 hover:scale-110">
-                    <i v-if="isPlaying" data-feather="pause" class="w-5 h-5"></i>
-                    <i v-else data-feather="play" class="w-5 h-5"></i>
-                </button>
-                <button @click="playNext" class="text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-all duration-200 hover:scale-110">
-                    <i data-feather="skip-forward" class="w-5 h-5"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-</footer>
+        </footer>
 
         <!-- Artist Info Modal -->
         <div v-if="showArtistInfoModal" class="artist-info-modal">
@@ -803,42 +1322,42 @@
             </div>
         </div>
 
-        <div id="infoModal" class="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex items-center justify-center z-50" v-show="showModal">
-            <div class="bg-white dark:bg-gray-900 w-full max-w-4xl shadow-2xl flex overflow-hidden">
+        <div id="infoModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50" v-show="showModal">
+            <div class="vision-glass-heavy w-full max-w-4xl shadow-2xl flex overflow-hidden rounded-2xl">
                 <!-- Left side with player info -->
-                <div class="p-8 w-1/3 flex flex-col border-r border-gray-200 dark:border-gray-700">
+                <div class="p-8 w-1/3 flex flex-col border-r border-white/20 dark:border-white/10">
                     <div class="flex items-center mb-6">
-                        <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+                        <div class="w-16 h-16 bg-gradient-to-br from-purple-500/80 to-pink-500/80 rounded-full flex items-center justify-center backdrop-blur-sm">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
                             </svg>
                         </div>
                     </div>
         
-                    <h2 class="text-2xl font-extrabold font-bashontaitoru dark:text-white mb-1">ユウジン プレイヤー</h2>
-                    <p class="text-lg font-semibold dark:text-gray-300 mb-6">{{ $t('playerNameEn') }}</p>
+                    <h2 class="text-2xl font-extrabold font-bashontaitoru text-vision-text-light dark:text-vision-text-dark mb-1">ユウジン プレイヤー</h2>
+                    <p class="text-lg font-semibold text-vision-secondary-light dark:text-vision-secondary-dark mb-6">{{ $t('playerNameEn') }}</p>
         
-                    <div class="border-t border-gray-200 dark:border-gray-700 my-3"></div>
+                    <div class="border-t border-white/20 dark:border-white/10 my-3"></div>
         
-                    <p class="text-sm text-gray-500 dark:text-gray-400 mb-auto">{{ $t('version', { version: 'Windows RELVue213.0.0-C20250430-0501(Codename:RikuhachimaAru/陸八魔亜瑠)' }) }}</p>
+                    <p class="text-sm text-vision-secondary-light dark:text-vision-secondary-dark mb-20">{{ $t('version', { version: 'RELDesktop13.2.0-C20250525-26(Codename:Trailblazer)' }) }}</p>
         
-                    <p class="text-gray-500 dark:text-gray-400 text-sm mt-8">© Seirai Haraguchi,2025</p>
+                    <p class="text-vision-secondary-light dark:text-vision-secondary-dark text-sm mt-8">© 原口 正瀬,2025</p>
                 </div>
         
                 <!-- Right side with character image -->
                 <div class="w-2/3 relative">
-                    <button @click="closeModal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 transition-colors duration-200 z-10">
+                    <button @click="closeModal" class="absolute top-4 right-4 text-vision-secondary-light hover:text-vision-text-light dark:text-vision-secondary-dark dark:hover:text-vision-text-dark transition-colors duration-200 z-10">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
         
-                    <div class="h-full w-full bg-gradient-to-br from-amber-100 to-amber-200 dark:from-amber-800 dark:to-amber-900 relative">
-                        <img src="https://images2.alphacoders.com/130/thumb-1920-1300795.jpg" alt="Rikuhachima Aru" class="w-full h-full object-cover">
+                    <div class="h-full w-full bg-gradient-to-br from-amber-100/80 to-amber-200/80 dark:from-amber-800/80 dark:to-amber-900/80 relative backdrop-blur-sm">
+                        <img src="./resources/codename_character.png" alt="Trailblazer" class="w-full h-full object-cover">
                         <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/50 to-transparent text-white">
                             <div class="flex justify-between items-end">
-                                <p class="text-xl font-bold">Rikuhachima Aru</p>
-                                <p class="text-sm font-light opacity-80">https://wall.alphacoders.com/big.php?i=1300795</p>
+                                <p class="text-xl font-bold">Trailblazer(開拓者)</p>
+                                <p class="text-sm font-light opacity-80"> https://www.pixiv.net/artworks/121984588</p>
                             </div>
                         </div>
                     </div>
@@ -849,8 +1368,11 @@
 
     <script src="app.js"></script>
     <script src="app2.js"></script>
-    <script src="nowplayinglyrics.js"></script>
-    <script src="app-translations.js"></script>
-    <script src="app-library.js"></script>
+    <script src="app3.js"></script>
+    <script src="app4.js"></script>
+    <script src="./smtcinte/app5.js"></script>
+    <script src="./smtcinte/app6.js"></script>
+    <script src="./smtcinte/app7.js"></script>
+    <script src="app-p1.js"></script>
 </body>
 </html>
