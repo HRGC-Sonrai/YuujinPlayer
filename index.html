@@ -112,7 +112,7 @@
             -webkit-backdrop-filter: blur(20px);
             background: rgba(255, 255, 255, 0.15);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3 cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .vision-button:hover {
@@ -132,11 +132,11 @@
 
         /* Page transition animations - Windows 10 style */
         .page-transition-enter-active {
-            transition: all 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: all 0.1 cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .page-transition-leave-active {
-            transition: all 0.075s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            transition: all 0.075 cubic-bezier(0.55, 0.055, 0.675, 0.19);
         }
 
         .page-transition-enter {
@@ -368,7 +368,7 @@
             font-size: 1.5rem;
             cursor: pointer;
             color: rgba(0, 0, 0, 0.7);
-            transition: color 0.2s;
+            transition: color 0.2;
         }
 
         .dark .artist-info-close {
@@ -1269,7 +1269,7 @@
                     </div>
                     <div class="text-sm text-vision-secondary-light dark:text-vision-secondary-dark cursor-pointer hover:text-vision-text-light dark:hover:text-vision-text-dark transition-colors duration-200" @click="openModal">
                         <i data-feather="info" class="w-5 h-5 sm:hidden"></i>
-                        <span class="hidden sm:inline">RELDesktop13.2.0-C20250525-26(Codename:Trailblazer)</span>
+                        <span class="hidden sm:inline">RELWebsite13.2.0-C20250525-26(Codename:Trailblazer)</span>
                     </div>
                 </div>
                 
@@ -1290,7 +1290,7 @@
                     <div class="hidden sm:flex flex-1 items-center">
                         <span 
                             class="text-sm text-vision-secondary-light dark:text-vision-secondary-dark mr-4"
-                            style="animation: progress-bounce 2s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;"
+                            style="animation: progress-bounce 2 cubic-bezier(0.25, 0.1, 0.25, 1) infinite;"
                         >{{ formatTime(currentTime) }}/{{ formatTime(duration) }}</span>
                         <div class="flex-1 h-1 bg-white/20 dark:bg-white/10 rounded-full group">
                             <div class="h-full bg-vision-accent-light dark:bg-vision-accent-dark rounded-full transition-all duration-300 ease-in-out group-hover:h-2" 
@@ -1339,7 +1339,7 @@
         
                     <div class="border-t border-white/20 dark:border-white/10 my-3"></div>
         
-                    <p class="text-sm text-vision-secondary-light dark:text-vision-secondary-dark mb-20">{{ $t('version', { version: 'RELDesktop13.2.0-C20250525-26(Codename:Trailblazer)' }) }}</p>
+                    <p class="text-sm text-vision-secondary-light dark:text-vision-secondary-dark mb-20">{{ $t('version', { version: 'RELWebsite13.2.0-C20250525-26(Codename:Trailblazer)' }) }}</p>
         
                     <p class="text-vision-secondary-light dark:text-vision-secondary-dark text-sm mt-8">© 原口 正瀬,2025</p>
                 </div>
